@@ -80,7 +80,7 @@ public class Menu {
         System.out.println("================================================");
         System.out.println("  Welcome to the "+ this.hotel.getName());
         System.out.println("================================================");
-        System.out.println("There are currently " + Floor.totalOccupants() +  " guests at this hotel");
+//        System.out.println("There are currently " + Floor.totalOccupants() +  " guests at this hotel");
         System.out.println("1. Display Overall Booking Status");
         System.out.println("2. Floor menu");
         System.out.println("");
@@ -149,6 +149,7 @@ public class Menu {
         System.out.println("1. Change ROOM");
         System.out.println("2. Book");
         System.out.println("3. Cancel");
+        System.out.println("4. Display current occupier");
         System.out.println("");
         System.out.println("9. Back to FLOOR menu");
         System.out.println("0. Exit");
@@ -168,6 +169,9 @@ public class Menu {
                 break;
             case 3:
                 this.hotel.cancelRoom(this.currentFloor, (this.currentRoom));
+                break;
+            case 4:
+                this.hotel.displayRoomOccupant(this.currentFloor, this.currentRoom);
                 break;
             case 9:
                 this.currentRoom = 0;

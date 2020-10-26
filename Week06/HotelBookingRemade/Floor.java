@@ -1,7 +1,6 @@
 package Week06.HotelBookingRemade;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
@@ -49,23 +48,23 @@ public class Floor {
         }
     }
 
-    public void totalOccupants() {
-      ArrayList<Integer> freeRooms = new ArrayList<Integer>();
-      ArrayList<Integer> takenRooms = new ArrayList<Integer>();
-      int takenRoom = 0;
-        for (int i = 0; i < rooms.length; i++) {
-            //rooms[i].display();
-            if (this.rooms[i].isFree()) {
-                freeRooms.add(this.rooms[i].getRoomNumber());
-            } else {
-                takenRooms.add(this.rooms[i].getRoomNumber());
-                takenRoom++; //TODO THis is probably bullshit.
-            }
-        }
-
-        System.out.println(takenRoom);
-
-    }
+////    public void totalOccupants() {
+////      ArrayList<Integer> freeRooms = new ArrayList<Integer>();
+////      ArrayList<Integer> takenRooms = new ArrayList<Integer>();
+////      int takenRoom = 0;
+////        for (int i = 0; i < rooms.length; i++) {
+////            //rooms[i].display();
+////            if (this.rooms[i].isFree()) {
+////                freeRooms.add(this.rooms[i].getRoomNumber());
+////            } else {
+////                takenRooms.add(this.rooms[i].getRoomNumber());
+////                takenRoom++; //TODO THis is probably crap
+////            }
+////        }
+//
+//        System.out.println(takenRoom);
+//
+//    }
 
 //    public void findaRoomtoBook()
 //    {
@@ -113,6 +112,13 @@ public class Floor {
 
     public void findaRoomtoCancel(int passedRoomNumber) {
         rooms[passedRoomNumber].cancelRoom();
+    }
+
+    public void displayRoomStatus(int passedRoomNumber) {
+
+
+        rooms[passedRoomNumber].display();
+
     }
 
     public Room getRoom(int roomNumber) {

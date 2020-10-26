@@ -1,7 +1,5 @@
 package Week06.HotelBookingRemade;
 
-import java.util.Scanner;
-
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
  *                             2020 HND Tutorial                          *
@@ -54,6 +52,10 @@ public class Hotel {
         int floorChoice = passedFloorChoice;
         int roomChoice = passedRoomNumber;
         this.floors[floorChoice].findaRoomtoBook(roomChoice);
+    }
+
+    public void displayRoomOccupant(int passedFloorChoice, int passedRoomNumber)    {
+        this.floors[passedFloorChoice].displayRoomStatus(passedRoomNumber);
     }
 
 //    public void cancelRoom() {

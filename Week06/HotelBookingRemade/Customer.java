@@ -12,7 +12,8 @@ public class Customer {
     private String name;
     private String email;
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Customer(String name, String email) {
         this.name = name;
@@ -23,7 +24,8 @@ public class Customer {
      * Outputs the contents of the object to the console.
      */
     public void display() {
-        System.out.println("Details are " + this.name + " " + this.email);
+        System.out.println("Email " + this.email);
+        System.out.println("Name" + this.name);
     }
 
     /**
