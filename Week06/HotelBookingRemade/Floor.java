@@ -48,24 +48,26 @@ public class Floor {
         }
     }
 
-////    public void totalOccupants() {
-////      ArrayList<Integer> freeRooms = new ArrayList<Integer>();
-////      ArrayList<Integer> takenRooms = new ArrayList<Integer>();
-////      int takenRoom = 0;
-////        for (int i = 0; i < rooms.length; i++) {
-////            //rooms[i].display();
-////            if (this.rooms[i].isFree()) {
-////                freeRooms.add(this.rooms[i].getRoomNumber());
-////            } else {
-////                takenRooms.add(this.rooms[i].getRoomNumber());
-////                takenRoom++; //TODO THis is probably crap
-////            }
-////        }
-//
-//        System.out.println(takenRoom);
-//
-//    }
 
+    /**
+     * an attempt at getting all the occupants in the hotel to total up. I haven't figured this out yet.
+     * @param passedRoomNumber
+     */
+    public int totalOccupants() {
+        int takenRooms = 0;
+        for (int i = 0; i < rooms.length; i++) {
+            if (!this.rooms[i].isFree()) {
+                takenRooms++;
+            }
+        }
+
+        return takenRooms;
+    }
+
+    /**
+     * This is the original method given in the tutorial. Below is my own version that correlates to this software
+     * @param passedRoomNumber
+     */
 //    public void findaRoomtoBook()
 //    {
 //        Scanner kboard = new Scanner(System.in);
@@ -92,6 +94,10 @@ public class Floor {
 
     }
 
+    /**
+     * Same again as above.
+     * @param passedRoomNumber
+     */
 //    public void findaRoomtoCancel()
 //    {
 //        Scanner kboard = new Scanner(System.in);

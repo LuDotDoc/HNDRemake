@@ -72,6 +72,18 @@ public class Hotel {
         this.floors[floorChoice].findaRoomtoCancel(roomChoice);
     }
 
+    public int totalOccupantsInHotel() {
+        int takenRooms = 0;
+
+        for(int i = 0; i < this.floors.length; i++)   {
+            takenRooms += this.floors[i].totalOccupants();
+        }
+
+        return takenRooms;
+    }
+
+
+
     public Floor getFloor(int floorNumber) {
         return this.floors[floorNumber];
     }

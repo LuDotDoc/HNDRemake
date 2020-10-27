@@ -37,6 +37,11 @@ public class Menu {
         this.state = States.MAIN;
     }
 
+    /**
+     * Corrects the discrepancy between index value and real world value so it's easier for the user to understand
+     * Allows the menu to only display the correct number of floors in relation to the hotel object. You cannot get less than 0 or more than available floors
+     * @param newfloor
+     */
     public void setCurrentFloor(int newfloor) {
         //newfloor = newfloor - 1;
         newfloor--; // Make sure newfloor is an index rather than floor number
@@ -52,6 +57,10 @@ public class Menu {
         this.currentFloor = newfloor;
     }
 
+    /**
+     * Same as above but with room numbers instead of floors.
+     * @param newRoom
+     */
     public void setCurrentRoom(int newRoom) {
         newRoom--; // Make index rather than room number
 
@@ -66,6 +75,9 @@ public class Menu {
         this.currentRoom = newRoom;
     }
 
+    /**
+     * A simple way to pause the menu interaction to allow the user to read the details on screen before progressing
+     */
     public void advancePrompt() {
         System.out.print("[Press Enter to Continue]");
         //kboard.nextLine();
@@ -76,11 +88,14 @@ public class Menu {
         }
     }
 
+    /**
+     * Main menu containing the first level of switch statement to navigate the program
+     */
     public void mainMenu() {
         System.out.println("================================================");
         System.out.println("  Welcome to the "+ this.hotel.getName());
         System.out.println("================================================");
-//        System.out.println("There are currently " + Floor.totalOccupants() +  " guests at this hotel");
+        System.out.println("There are currently " + this.hotel.totalOccupantsInHotel() +  " guests at this hotel");
         System.out.println("1. Display Overall Booking Status");
         System.out.println("2. Floor menu");
         System.out.println("");
@@ -105,6 +120,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Floor menu, the second level of switch statements.
+     */
     public void floorMenu() {
         System.out.println("==================");
         System.out.println("=== Floor Menu ===");
@@ -140,6 +158,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Room menu as above but for rooms
+     */
     public void roomMenu() {
         int totalRooms = this.hotel.getFloors()[this.currentFloor].getRooms().length;
 
@@ -179,6 +200,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Basic menu functionality tying the enums providing to the menu they relate to MAIN to the main menu for example.
+     */
     public void menuControl() {
         switch (this.state) {
             case MAIN:
@@ -198,6 +222,9 @@ public class Menu {
         }
     }
 
+    /**
+     * A method allowing the user to read a nice message upon exiting the software.
+     */
     public void run() {
         while (true) {
             if (this.state == States.EXIT) {
