@@ -12,7 +12,7 @@ import java.io.IOException;
  *************************************************************************/
 
 public class Reader {
-    public static String ReadFile(String filename) {
+    public static String ReadFromFile(String filename) {
         java.io.FileReader reader;
         BufferedReader inputBuffer = null;
         StringBuilder out = new StringBuilder();

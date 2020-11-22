@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class FileCreation {
 
-    public static File FileCreation(String fileName) {
+    public static void CreateFile(String fileName) {
         System.out.println("CREATING A FILE");
 
         // We can also use the File class to create new files
@@ -35,7 +35,7 @@ public class FileCreation {
         }
 
 
-        return outputFile;
+
     }
 
 

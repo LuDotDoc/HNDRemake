@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Writer {
 
-    public static File writeToFile(String fileName, String fileContent)  {
+    public static void WriteToFile(String fileName, String fileContent) {
         System.out.println("WRITING TO FILE");
 
         // In similar fashion to reading a file, Java provides some classed to support writing.
@@ -38,11 +38,11 @@ public class Writer {
 //            outputBuffer.write("And we have been introduced to reading and writing files in Java.\n");
             outputBuffer.write(fileContent);
 
-        }catch(IOException ioe){ // both creating FileWriter and write() can throw an Exception so we hava a catch to handle them
+        } catch (IOException ioe) { // both creating FileWriter and write() can throw an Exception so we hava a catch to handle them
             ioe.printStackTrace();
 
-        }finally{	// we have an open file so we must make sure it is disposed of in a finally block
-            if(outputBuffer != null){
+        } finally {    // we have an open file so we must make sure it is disposed of in a finally block
+            if (outputBuffer != null) {
                 try {
                     outputBuffer.close();
                 } catch (IOException e) {
@@ -50,12 +50,7 @@ public class Writer {
                 }
             }
         }
-
-        return null;
     }
-
-
-
 }
 
                                                                            
