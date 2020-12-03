@@ -131,6 +131,7 @@ public class Menu {
         System.out.println("1. Display Room Availability");
         System.out.println("2. Change Floor");
         System.out.println("3. ROOM Menu");
+        System.out.println("4. Book an entire floor");
         System.out.println("");
         System.out.println("9. Back to MAIN menu");
         System.out.println("0. Exit");
@@ -151,6 +152,9 @@ public class Menu {
                 break;
             case 3:
                 this.state = States.ROOM;
+                break;
+            case 4:
+                this.hotel.bookFloor(this.currentFloor);
                 break;
             case 9:
                 this.currentFloor = 0;

@@ -1,6 +1,4 @@
-package Week02.Clock.Pontoon;
-
-import java.util.Scanner;
+package Week02.Pontoon;
 
 /*************************************************************************
  *                           Luke Docwra 17019043                         *

@@ -1,4 +1,4 @@
-package Week02.Clock.Pontoon;
+package Week02.Pontoon;
 
 /*************************************************************************
  *                           Luke Docwra 17019043                         *

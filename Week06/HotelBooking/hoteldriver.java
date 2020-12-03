@@ -1,4 +1,4 @@
-package Week06.HotelBookingRemade;
+package Week06.HotelBooking;
 
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
@@ -6,14 +6,22 @@ package Week06.HotelBookingRemade;
  *                               Week06.HotelBooking                          *
  *************************************************************************/
 
-public class DriverMain
+public class hoteldriver
 {
     public static void main(String[] args)
     {
-        Hotel hotel = new Hotel(101,"The Grand");
+        hotel h1 = new hotel(101,"The Grand");
 
-        Menu menu = new Menu(hotel);
-        menu.run();
+        h1.display();
+        h1.bookARoom();
+        h1.display();
+        h1.CancelARoom();
+        h1.display();
 
     }
 }
+
+
+
+
+                                                                           

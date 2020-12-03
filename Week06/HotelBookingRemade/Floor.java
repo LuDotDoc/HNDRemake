@@ -48,10 +48,17 @@ public class Floor {
         }
     }
 
+    public boolean isFloorFree() {
+        for (Room room : this.rooms) {
+            if (!room.isFree()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
-     * an attempt at getting all the occupants in the hotel to total up. I haven't figured this out yet.
-     * @param passedRoomNumber
+     * an attempt at getting all the occupants in the hotel to total up.
      */
     public int totalOccupants() {
         int takenRooms = 0;

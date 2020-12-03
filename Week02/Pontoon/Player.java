@@ -1,4 +1,4 @@
-package Week02.Clock.Pontoon;
+package Week02.Pontoon;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Player {
     /**
      * Create a new player.
      */
-    public Player()  {
+    public Player() {
         this.kboard = new Scanner(System.in);
     }
 

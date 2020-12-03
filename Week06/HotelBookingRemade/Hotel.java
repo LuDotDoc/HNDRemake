@@ -54,6 +54,19 @@ public class Hotel {
         this.floors[floorChoice].findaRoomtoBook(roomChoice);
     }
 
+    public void bookFloor(int floorNumber) {
+        if (this.floors[floorNumber].isFloorFree())    {
+            Customer customer = new Customer();
+            customer.setByUserInput();
+
+            for (Room room : this.floors[floorNumber].getRooms()) {
+                room.bookRoom(customer);
+            }
+        }else   {
+            System.out.println("Sorry a room is not available on this floor");
+        }
+    }
+
     public void displayRoomOccupant(int passedFloorChoice, int passedRoomNumber)    {
         this.floors[passedFloorChoice].displayRoomStatus(passedRoomNumber);
     }
