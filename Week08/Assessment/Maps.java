@@ -11,6 +11,7 @@ public class Maps {
      * Holds an array of arrays containing strings. This strings are text based representations of levels. Different characters are used to define different level elements
      * X = wall, * = crate, . = diamond, @ = warehouse keeper, spaces = spaces
      */
+    private int current;
     private String[] levels = new String[] {
             "    XXXXXX\n" +
             "    XX   X\n" +
@@ -24,6 +25,7 @@ public class Maps {
             "    XX     XXXXXXXXX\n" +
             "    XXXXXXXX\n",
 
+            "              \n" +
             "XXXXXXXXXXXX  \n" +
             "X..  X     XXX\n" +
             "X..  X *  *  X\n" +
@@ -85,7 +87,6 @@ public class Maps {
         this.current = 0;
     }
 
-    private int current;
 
     /**
      * Retrives a map from the array of map strings.
@@ -116,7 +117,6 @@ public class Maps {
      */
     public void progressNextLevel() {
         this.current++;
-
         if (current > this.getLevelAmount()) {
             this.current = this.getLevelAmount() - 1;
         }
@@ -127,13 +127,8 @@ public class Maps {
      * @return if there are more levels returns true otherwise returns false.
      */
     public boolean hasNextLevel() {
-        if (current + 1 > this.getLevelAmount() - 1) {
-            return false;
-        }
-
-        return true;
+        return current + 1 <= this.getLevelAmount() - 1;
     }
-
 }
 
                                                                            
