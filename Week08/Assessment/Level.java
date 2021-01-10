@@ -25,25 +25,18 @@ public class Level extends JPanel {
     private ArrayList<Wall> walls;
     private ArrayList<Crate> crates;
     private ArrayList<Diamond> diamonds;
-
     private WarehouseKeeper warehouseKeeper;
-
     private boolean isCompleted = false;
-
     private Maps maps;
-
     private SokobanDriver _parent;
-
     private Long movesCounter;
 
     public Level(SokobanDriver parent) {
         this._parent = parent;
         this.movesCounter = 0L;
-
         addKeyListener(new Level.TAdapter());
         this.setFocusable(true);
         this.maps = new Maps();
-
         this.init();
     }
 
@@ -123,7 +116,6 @@ public class Level extends JPanel {
         for (MapElement element : world) {
             g.drawImage(element.getImage(), element.getX(), element.getY(), this);
         }
-
         if (isCompleted) {
             g.setColor(new Color(0, 0, 0));
             g.drawString("Completed", 25, 20);
@@ -131,7 +123,6 @@ public class Level extends JPanel {
             g.setColor(new Color(0,0,0));
             g.drawString("Level: " + (this.maps.getCurrentLevel() + 1) + "/" + this.maps.getLevelAmount(), 25, 20);
         }
-
         g.drawString("Moves: " + this.movesCounter, 25, 35);
     }
 
@@ -145,7 +136,6 @@ public class Level extends JPanel {
     public int getLevelWidth() {
         return levelWidth;
     }
-
     public int getLevelHeight() {
         return levelHeight;
     }
@@ -157,76 +147,64 @@ public class Level extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
             if (isCompleted) {
                 return;
             }
-
             int key = e.getKeyCode();
-
             switch (key) {
 
-                case KeyEvent.VK_LEFT:
-
+                case (KeyEvent.VK_LEFT):
+                case (KeyEvent.VK_A):
                     if (checkWallCollision(warehouseKeeper,
                             LEFT_COLLISION)) {
                         return;
                     }
-
                     if (checkBagCollision(LEFT_COLLISION)) {
                         return;
                     }
-
                     warehouseKeeper.move(-Config.SPACE, 0);
-
+                    movesCounter++;
                     break;
 
                 case KeyEvent.VK_RIGHT:
-
+                case (KeyEvent.VK_D):
                     if (checkWallCollision(warehouseKeeper, RIGHT_COLLISION)) {
                         return;
                     }
-
                     if (checkBagCollision(RIGHT_COLLISION)) {
                         return;
                     }
-
                     warehouseKeeper.move(Config.SPACE, 0);
-
+                    movesCounter++;
                     break;
 
                 case KeyEvent.VK_UP:
-
+                case (KeyEvent.VK_W):
                     if (checkWallCollision(warehouseKeeper, TOP_COLLISION)) {
                         return;
                     }
-
                     if (checkBagCollision(TOP_COLLISION)) {
                         return;
                     }
-
                     warehouseKeeper.move(0, -Config.SPACE);
-
+                    movesCounter++;
                     break;
 
                 case KeyEvent.VK_DOWN:
-
+                case (KeyEvent.VK_S):
                     if (checkWallCollision(warehouseKeeper, BOTTOM_COLLISION)) {
                         return;
                     }
-
                     if (checkBagCollision(BOTTOM_COLLISION)) {
                         return;
                     }
-
                     warehouseKeeper.move(0, Config.SPACE);
-
+                    movesCounter++;
                     break;
 
                 case KeyEvent.VK_R:
-
                     restartLevel();
-
+                    movesCounter++;
                     break;
 
                 case KeyEvent.VK_N:
@@ -237,7 +215,6 @@ public class Level extends JPanel {
                 default:
                     break;
             }
-
             repaint();
         }
     }
@@ -249,7 +226,7 @@ public class Level extends JPanel {
      * @return returns a boolean allowing the function to tell other functions if the path is blocked or not.
      */
     private boolean checkWallCollision(MovableMapElement movableMapElement, int type) {
-        this.movesCounter++;
+
 
         switch (type) {
             case LEFT_COLLISION:
@@ -437,8 +414,8 @@ public class Level extends JPanel {
     }
 
     /**
-     * This function is used to allow the level complete checks to be skipped. If passed a true skipCheck boolean. The crates don't all have to be on the diamonds to allow the level to finish.
-     * @param skipCheck
+     * This function is used to find out if all the diamonds are occupied with crates. If they are all occupied then the level is complete. The program moves onto the next map.
+     * @param skipCheck if this parameter is passed true then the diamonds do not all have to be occupied to finish the level. IE when the skip button is pressed.
      */
     public void isComplete(boolean skipCheck) {
         int numberOfDiamonds = diamonds.size();
@@ -447,26 +424,21 @@ public class Level extends JPanel {
         if (!skipCheck) {
             for (int i = 0; i < numberOfDiamonds; i++) {
                 Crate crate = crates.get(i);
-
                 for (Diamond diamond : diamonds) {
                     if (crate.getX() == diamond.getX() && crate.getY() == diamond.getY()) {
                         finishedDiamonds += 1;
                     }
                 }
             }
-
             if (finishedDiamonds != numberOfDiamonds) {
                 return;
             }
         }
-
         isCompleted = true;
-
         if (this.maps.hasNextLevel()) {
             this.maps.progressNextLevel();
             this.restartLevel();
         }
-
         repaint();
     }
 
