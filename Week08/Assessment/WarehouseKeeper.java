@@ -2,8 +2,8 @@ package Week08.Assessment;
 
 import javafx.scene.image.Image;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javax.swing.*;
+
 
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
@@ -12,13 +12,19 @@ import java.io.FileNotFoundException;
  *************************************************************************/
 
 public class WarehouseKeeper extends MovableMapElement {
+    /**
+     * Holds the x and y coordinates of player character. Also holds the image location so that the character has am image.
+     * @param x x coordinate
+     * @param y y coordinate
+     */
+    public WarehouseKeeper(int x, int y) {
+        super(x, y);
 
-    private void initWarehouseKeeper()   {
+        ImageIcon icon = new ImageIcon("Week08/Assessment/WarehouseImages/WarehouseKeeper.png");
+        this.setImage(icon.getImage());
 
-        Image warehouseKeeper = new Image("Week08/Assessment/SokobanImages/WarehouseKeeper.png");
-
+        //System.out.println("Warhouse keeper x:" + x + "y:" + y);
     }
-
 }
 
                                                                            

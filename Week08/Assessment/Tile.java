@@ -9,6 +9,9 @@ package Week08.Assessment;
 public class Tile extends MapElement {
 
 
+    public Tile(int x, int y) {
+        super(x, y);
+    }
 }
 
                                                                            
