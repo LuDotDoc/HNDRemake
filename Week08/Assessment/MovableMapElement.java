@@ -2,6 +2,8 @@ package Week08.Assessment;
 
 import Week08.TestingCode.Actor;
 
+import java.util.ArrayList;
+
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
  *                             2020 HND Tutorial                          *
@@ -9,8 +11,6 @@ import Week08.TestingCode.Actor;
  *************************************************************************/
 
 public class MovableMapElement extends MapElement {
-
-
 
     public MovableMapElement(int x, int y) {
         super(x, y);
@@ -24,12 +24,15 @@ public class MovableMapElement extends MapElement {
     public boolean isLeftCollision(MapElement mapElement) {
         return getX() - Config.SPACE == mapElement.getX() && getY() == mapElement.getY();
     }
+
     public boolean isRightCollision(MapElement mapElement) {
         return getX() + Config.SPACE == mapElement.getX() && getY() == mapElement.getY();
     }
+
     public boolean isTopCollision(MapElement mapElement) {
         return getY() - Config.SPACE == mapElement.getY() && getX() == mapElement.getX();
     }
+
     public boolean isBottomCollision(MapElement mapElement) {
         return getY() + Config.SPACE == mapElement.getY() && getX() == mapElement.getX();
     }
@@ -37,7 +40,6 @@ public class MovableMapElement extends MapElement {
     public void move(int x, int y) {
         int dx = getX() + x;
         int dy = getY() + y;
-
         setX(dx);
         setY(dy);
     }

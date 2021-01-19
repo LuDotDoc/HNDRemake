@@ -22,8 +22,6 @@ public class WarehouseKeeper extends MovableMapElement {
 
         ImageIcon icon = new ImageIcon("Week08/Assessment/WarehouseImages/WarehouseKeeper.png");
         this.setImage(icon.getImage());
-
-        //System.out.println("Warhouse keeper x:" + x + "y:" + y);
     }
 }
 

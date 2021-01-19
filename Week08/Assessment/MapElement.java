@@ -38,4 +38,12 @@ public class MapElement {
     public void setY(int y) {
         this.y = y;
     }
+
+    public static boolean checkOverlap(MapElement e1, MapElement e2) {
+        if (e1.getX() == e2.getX() && e1.getY() == e2.getY()) {
+            return true;
+        }
+
+        return false;
+    }
 }

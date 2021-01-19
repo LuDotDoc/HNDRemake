@@ -1,5 +1,13 @@
 package Week08.Assessment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
  *                             2020 HND Tutorial                          *
@@ -12,88 +20,51 @@ public class Maps {
      * X = wall, * = crate, . = diamond, @ = warehouse keeper, spaces = spaces
      */
     private int current;
-    private String[] levels = new String[] {
-            "    XXXXXX\n" +
-            "    XX   X\n" +
-            "    XX*  X\n" +
-            "  XXXX  *XX\n" +
-            "  XX  * * X\n" +
-            "XXXX X XX X   XXXXXX\n" +
-            "XX   X XX XXXXX  ..X\n" +
-            "XX *  *          ..X\n" +
-            "XXXXXX XXX X@XX  ..X\n" +
-            "    XX     XXXXXXXXX\n" +
-            "    XXXXXXXX\n",
 
-            "              \n" +
-            "XXXXXXXXXXXX  \n" +
-            "X..  X     XXX\n" +
-            "X..  X *  *  X\n" +
-            "X..  X*XXXX  X\n" +
-            "X..    @ XX  X\n" +
-            "X..  X X  * XX\n" +
-            "XXXXXX XX* * X\n" +
-            "  X *  * * * X\n" +
-            "  X    X     X\n" +
-            "  XXXXXXXXXXXX\n",
-
-            "        XXXXXXXX \n" +
-            "        X     @X \n" +
-            "        X *X* XX \n" +
-            "        X *  *X  \n" +
-            "        XX* * X  \n" +
-            "XXXXXXXXX * X XXX\n" +
-            "X....  XX *  *  X\n" +
-            "XX...    *  *   X\n" +
-            "X....  XXXXXXXXXX\n" +
-            "XXXXXXXX         \n" +
-            "                   ",
-
-            "              XXXXXXXX\n" +
-            "              X  ....X\n" +
-            "   XXXXXXXXXXXX  ....X\n" +
-            "   X    X  * *   ....X\n" +
-            "   X ***X*  * X  ....X\n" +
-            "   X  *     * X  ....X\n" +
-            "   X ** X* * *XXXXXXXX\n" +
-            "XXXX  * X     X       \n" +
-            "X   X XXXXXXXXX       \n" +
-            "X    *  XX            \n" +
-            "X **X** @X            \n" +
-            "X   X   XX            \n" +
-            "XXXXXXXXX             \n" +
-            "                      ",
-
-            "        XXXXX    \n" +
-            "        X   XXXXX\n" +
-            "        X X*XX  X\n" +
-            "        X     * X\n" +
-            "XXXXXXXXX XXX   X\n" +
-            "X....  XX *  *XXX\n" +
-            "X....    * ** XX \n" +
-            "X....  XX*  * @X \n" +
-            "XXXXXXXXX  *  XX \n" +
-            "        X * *  X \n" +
-            "        XXX XX X \n" +
-            "          X    X \n" +
-            "          XXXXXX \n" +
-            "                 "
-    };
+    private ArrayList<String> mapPaths;
 
     /**
      * Allows the program to store which map is currently being displayed.
      */
     public Maps() {
         this.current = 0;
+
+        this.loadMapList();
     }
 
+    private void loadMapList() {
+        File folder = new File("Week08/Assessment/Levels");
+        File[] mapList = folder.listFiles();
 
-    /**
-     * Retrives a map from the array of map strings.
-     * @return returns the string to allow it to be decoded and displayed as a level
-     */
-    public String getCurrentLevelString() {
-        return levels[this.current];
+        this.mapPaths = new ArrayList<>();
+
+        for (int i = 0; i < mapList.length; i++) {
+            if (mapList[i].isFile() && mapList[i].getName().toLowerCase().contains("level")) {
+                this.mapPaths.add(mapList[i].getAbsolutePath());
+                //System.out.println(mapList[i].getAbsolutePath()); // debug
+            }
+        }
+    }
+
+    private String loadMap(String filePath) {
+        StringBuilder out = new StringBuilder();
+
+        try {
+            File myObj = new File(filePath);
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                out.append(data + "\n");
+            }
+
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        return out.toString();
     }
 
     /**
@@ -104,12 +75,29 @@ public class Maps {
         return this.current;
     }
 
+    public Map getCurrentMap() {
+        Map map = new Map();
+
+        String mapPath = this.mapPaths.get(this.current);
+        String mapString = this.loadMap(mapPath);
+
+        // If the map encounters a problem, load a default map.
+        if (mapString == null) {
+            System.out.println("Error: Map file  '" + mapPath + "' cannot be loaded.");
+            mapString = ". * @\n";
+        }
+
+        map.setMapString(mapString);
+
+        return map;
+    }
+
     /**
      * calculates how many different map strings are contained in the array.
      * @return returns the amount of map strings. Currently there are 5.
      */
     public int getLevelAmount() {
-        return this.levels.length;
+        return this.mapPaths.size();
     }
 
     /**
@@ -130,5 +118,3 @@ public class Maps {
         return current + 1 <= this.getLevelAmount() - 1;
     }
 }
-
-                                                                           

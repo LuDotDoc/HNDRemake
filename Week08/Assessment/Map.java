@@ -6,12 +6,14 @@ package Week08.Assessment;
  *                               Week08.Assessment                          *
  *************************************************************************/
 
-public class Tile extends MapElement {
+public class Map {
+    private String mapString;
 
+    public String getMapString() {
+        return mapString;
+    }
 
-    public Tile(int x, int y) {
-        super(x, y);
+    public void setMapString(String mapString) {
+        this.mapString = mapString;
     }
 }
-
-                                                                           
