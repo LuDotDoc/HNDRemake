@@ -2,9 +2,6 @@ package Week08.Assessment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,6 +29,9 @@ public class Maps {
         this.loadMapList();
     }
 
+    /**
+     * Checks the Levels folder to see how many levels there are. This is used so that the game does not try and progress to a level that does not exist.
+     */
     private void loadMapList() {
         File folder = new File("Week08/Assessment/Levels");
         File[] mapList = folder.listFiles();
@@ -46,6 +46,11 @@ public class Maps {
         }
     }
 
+    /**
+     * Loads in a level map from a text file. The files are made up of different strings of characters.
+     * @param filePath the path of the file.
+     * @return the string of characters from the text file.
+     */
     private String loadMap(String filePath) {
         StringBuilder out = new StringBuilder();
 

@@ -39,6 +39,12 @@ public class MapElement {
         this.y = y;
     }
 
+    /**
+     * Checks to see if two elements occupy the same x and y coordinates.
+     * @param e1 element 1 - a crate
+     * @param e2 element 2 - a diamond
+     * @return returns true if there is an overlap otherwise returns false.
+     */
     public static boolean checkOverlap(MapElement e1, MapElement e2) {
         if (e1.getX() == e2.getX() && e1.getY() == e2.getY()) {
             return true;

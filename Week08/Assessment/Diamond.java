@@ -9,9 +9,6 @@ import javax.swing.*;
  *************************************************************************/
 
 public class Diamond extends MapElement {
-
-    Boolean hasCrate;
-
     /**
      * Holds the x and y coordinates of diamond objects. Also holds the image location so that diamonds have images.
      * @param x x coordinate
@@ -22,14 +19,6 @@ public class Diamond extends MapElement {
 
         ImageIcon icon = new ImageIcon("Week08/Assessment/WarehouseImages/Diamond.png");
         this.setImage(icon.getImage());
-    }
-
-    public Boolean getHasCrate() {
-        return hasCrate;
-    }
-
-    public void setHasCrate(Boolean hasCrate) {
-        this.hasCrate = hasCrate;
     }
 }
 

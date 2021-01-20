@@ -82,6 +82,10 @@ public class Level {
         this.levelHeight = y;
     }
 
+    /**
+     * Takes the created lists of walls,diamonds and crates and adds them to a singular list. Allowing easy manipulation in case of level restart or completion.
+     * @return
+     */
     public ArrayList<MapElement> getMapElements() {
         ArrayList<MapElement> elements = new ArrayList<>();
 
@@ -92,6 +96,9 @@ public class Level {
         return elements;
     }
 
+    /**
+     * Removes all the diamonds, crates and walls from the lists
+     */
     public void clear() {
         this.diamonds.clear();
         this.crates.clear();

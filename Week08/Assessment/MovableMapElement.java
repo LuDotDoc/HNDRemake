@@ -1,9 +1,5 @@
 package Week08.Assessment;
 
-import Week08.TestingCode.Actor;
-
-import java.util.ArrayList;
-
 /*************************************************************************
  *                           Luke Docwra 17019043                         *
  *                             2020 HND Tutorial                          *

@@ -27,9 +27,7 @@ public class Game extends JPanel {
         this.movesCounter = 0L;
         addKeyListener(new MovementController(this));
         this.setFocusable(true);
-
         this.maps = new Maps();
-
         this.level = new Level(this.maps.getCurrentMap());
     }
 
@@ -127,7 +125,6 @@ public class Game extends JPanel {
                     }
                 }
                 return false;
-
 
             case BOTTOM_COLLISION:
                 for (int i = 0; i < this.level.getWalls().size(); i++) {
@@ -255,6 +252,9 @@ public class Game extends JPanel {
         return isCompleted;
     }
 
+    /**
+     * Checks if there is a collision, if there is not the player character moves to the left.
+     */
     public void moveLeft() {
         if (checkWallCollision(this.level.getWarehouseKeeper(),
                 LEFT_COLLISION)) {
@@ -266,7 +266,9 @@ public class Game extends JPanel {
         this.level.getWarehouseKeeper().move(-Config.SPACE, 0);
         movesCounter++;
     }
-
+    /**
+     * Checks if there is a collision, if there is not the player character moves to the right.
+     */
     public void moveRight() {
         if (checkWallCollision(this.level.getWarehouseKeeper(), RIGHT_COLLISION)) {
             return;
@@ -277,7 +279,9 @@ public class Game extends JPanel {
         this.level.getWarehouseKeeper().move(Config.SPACE, 0);
         movesCounter++;
     }
-
+    /**
+     * Checks if there is a collision, if there is not the player character moves up.
+     */
     public void moveUp() {
         if (checkWallCollision(this.level.getWarehouseKeeper(), TOP_COLLISION)) {
             return;
@@ -288,7 +292,9 @@ public class Game extends JPanel {
         this.level.getWarehouseKeeper().move(0, -Config.SPACE);
         movesCounter++;
     }
-
+    /**
+     * Checks if there is a collision, if there is not the player character moves down.
+     */
     public void moveDown() {
         if (checkWallCollision(this.level.getWarehouseKeeper(), BOTTOM_COLLISION)) {
             return;
@@ -300,11 +306,17 @@ public class Game extends JPanel {
         movesCounter++;
     }
 
+    /**
+     * Resets the map to the default layout of the player makes a mistake and is stuck
+     */
     public void moveResetMap() {
         this.level = new Level(this.maps.getCurrentMap());
         movesCounter++;
     }
 
+    /**
+     * Completes the level without all the crates being in the correct places on diamonds.
+     */
     public void skipLevelCheat() {
         isCompleted = true;
         isGameComplete(true);

@@ -27,6 +27,12 @@ public class Crate extends MovableMapElement {
         this.setImage(this.crateOffDiamond.getImage());
     }
 
+    /**
+     * This function allows the crate to be moved on screen. Also when a crate occupies a diamond it changes the image.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param diamonds The array list of diamonds holds their coordinates in case a player moves a crate onto a diamond and it needs to use a different image.
+     */
     public void move(int x, int y, ArrayList<Diamond> diamonds) {
         super.move(x, y);
 
